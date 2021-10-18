@@ -3,10 +3,9 @@ const Express = require('express');
 const app = Express();
 const dbConnection = require('./db');
 
-app.use(Express.json());
-
 const controllers = require('./controllers');
 
+app.use(Express.json());
 app.use('/log', controllers.logController);
 app.use('/user', controllers.userController);
 
