@@ -4,7 +4,7 @@ const {UniqueConstraintError} = require('sequelize/lib/errors');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 
-//* (POST) REGISTER NEW USER *\\
+// //* (POST) REGISTER NEW USER *\\
 router.post('/register', async (req, res) => {
     const {username, passwordhash} = req.body.user;
     try {
@@ -25,19 +25,20 @@ router.post('/register', async (req, res) => {
             });
         } else {       
             res.status(500).json({
-            message: "Failed to register user",
+                message: "Failed to register user",
+                Error: err
             });
         }
     }
 });
 
-//* (POST) lOGIN EXISTING USER *\\
+// //* (POST) lOGIN EXISTING USER *\\
 router.post('/login', async (req, res) => {
-    let (username, passwordhash) = req.body.user;   
+    const {username, passwordhash} = req.body.user;   
     try {
         const loginUser = await UserModel.findOne({
-            where: {username: username},
-        });
+                where: {username: username,},
+            });
         if (loginUser) {          
             let passwordComparison = await bcrypt.compare(passwordhash, loginUser.passwordhash);
             if(passwordComparison) {  
