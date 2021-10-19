@@ -5,3 +5,5 @@
 <img src="assets/Test_17_get_mine_log_by_id.PNG">
 <img src="assets/Test_19_Update_log.PNG">
 <img src="assets/Test_18_delete_log.PNG">
+<img src="assets/pgAdmin_users.PNG">
+<img src="assets/pgAdmin_logs.PNG">
